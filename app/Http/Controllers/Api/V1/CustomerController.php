@@ -30,7 +30,7 @@ class CustomerController extends Controller
         if($includeInvoices){
             $customers=$customers->with('invoices');
         }
-        return new CustomerCollection($customers->pagginate()->appends($request->query()));
+        return new CustomerCollection($customers->paginate()->appends($request->query()));
     }
 
 
@@ -84,6 +84,6 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        //
+        $customer->delete();
     }
 }

@@ -14,7 +14,9 @@ class StoreInvoiceRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        $user=$this->user();
+
+        return $user != null && $user->tokenCan('create');
     }
 
     /**
